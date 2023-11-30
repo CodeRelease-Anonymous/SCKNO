@@ -1,0 +1,108 @@
+dataset_name: BJ2022.npz
+device: cuda:0
+expid: prior
+log_level: INFO
+model_name: CausalKoopman
+runs: 1
+test_only: True
+base_path: data/BJ2022
+
+data:
+  freq: 30min
+  name: BJ2022
+  num_for_predict: 8
+  num_for_target: 3
+  num_of_days: 0
+  num_of_hours: 1
+  num_of_weeks: 0
+  num_shift: 0
+  points_per_hour: 2
+  test_batch_size: 40
+  train_batch_size: 40
+  external: True
+  val_batch_size: 40
+
+model:
+  adj: adj
+  norm_graph: sym
+
+  node_num: 235
+  time: 8
+  input_dim: 7
+  latent_dim: 8
+  hidden_dim: 64
+
+  attr_dim: 4
+  state_dim: 7
+  control_dim: 22
+  edge_dim: 1
+  g_dim: 64
+  node_hidden_dim: 64
+  edge_hidden_dim: 64
+  effect_hidden_dim: 128
+
+  residual: False
+  enc_type: GraphGRU
+  dec_type: pn
+  norm_type: Layer
+  gdep: 2
+  alpha: 0.5
+  use_node_adapt: True
+  use_spatial_transformer: True
+  use_Gprop: True
+
+  aug_reweight: False
+  use_aug: False
+
+  use_pred_g: True
+  strict_invariant_err: True
+
+  causal_mask: False
+  use_control: True
+  use_encoder_control: False
+
+  # For Koopman
+  use_prior: False
+  node_attention: True
+  node_regularize: True
+
+  use_global_operator: True
+  use_community_operator: True
+  use_adaAdj: True
+  sample_num: 1
+  community_num: 10
+  community_dim: 64
+
+
+  # For prior
+  noise_dist_type: mlp
+  base_dist_type: gaussian
+
+train:
+  base_lr: 0.001
+  weight_decay: 0.0001
+  epoch_start: 0
+  epochs: 300
+  global_step: 0
+  load_initial: True
+  tensorboard: False
+  visual_graph: False
+
+  max_grad_norm: 10
+  milestones: [100, 150, 200, 250]
+  lr_decay_ratio: 0.5
+
+  min_learning_rate: 2.0e-06
+  print_every: 1
+  tolerance: 50
+
+  rec: True
+  pred: True
+  hispred: True
+  regularize_rank: True
+  orthogonal: True
+  sparse: False
+  eig_rank: False
+
+  loss_weight: [1, 1, 1, 1, 1, 1, 1, 0.1]
+  best_mode: Results/BJ/BJ2022.pth
