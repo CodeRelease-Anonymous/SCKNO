@@ -1,5 +1,5 @@
 # Structural Causality-Constrained Koopman Neural Operator (SCKNO)
-submitted to ICDE-2024
+Submitted for review
 
 # How to run
 It's very simple to run, just modify the `data_name` in `main.py`
