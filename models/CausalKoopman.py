@@ -70,8 +70,6 @@ class CausalKoopman(nn.Module):
             self.norm = nn.InstanceNorm1d
 
         """########################################### Encoder ######################################################"""
-        # 编码器 求g(x)
-        # 编码器不输入控制变量
         self.use_control = use_control
 
         if self.use_control:
@@ -573,7 +571,6 @@ class CausalKoopman(nn.Module):
                                                  noise_dist=base_noise_dist)
             log_pz = (log_pz_global + log_pz_community + log_pz_node)/3.0
 
-            # 后验
             log_qzx = q_zx.log_prob(gx_vec)
             IM = (log_qzx - log_pz).mean()
         else:
