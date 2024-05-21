@@ -1,6 +1,6 @@
 Submitted for review 
 
-<!-- # Structural Causality-Constrained Koopman Neural Operator (SCKNO) 
+# Structural Causality-Constrained Koopman Neural Operator (SCKNO) 
 
 # How to run
 It's very simple to run, just modify the `data_name` in `main.py`
@@ -23,4 +23,3 @@ Change `test_only=False` in `data/ ckpt /data_name/config[BJ2021/NYC2016].yaml`
 ![](fig/Fig2.png)
 
 Thank you for your attention to our work
--->
