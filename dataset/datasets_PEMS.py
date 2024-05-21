@@ -30,8 +30,7 @@ def load_dataset(dataset_dir,
                  test_batch_size=None,
                  logger=None,
                  device='cuda:0'):
-    # 原始数据维度 batch time node, dim
-    # 需求维度# [batch, node_num, time, dim]
+
     cat_data = np.load(dataset_dir)
     x_train = cat_data['x_train'].transpose((0, 2, 1, 3))
     y_train = cat_data['y_train'].transpose((0, 2, 1, 3))
@@ -40,7 +39,6 @@ def load_dataset(dataset_dir,
     x_val = cat_data['x_val'].transpose((0, 2, 1, 3))
     y_val = cat_data['y_val'].transpose((0, 2, 1, 3))
 
-    # 合并时间维度
     x_train = np.concatenate([x_train, y_train], axis=2)
     x_val = np.concatenate([x_val, y_val], axis=2)
     x_test = np.concatenate([x_test, y_test], axis=2)
