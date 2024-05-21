@@ -1,15 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-'''
-@Project  ：Koopman 
-@File     ：datasets_PEMS.py
-@Author   ：Yu Zhao
-@Contact  ：iyzhao@buaa.edu.cn
-@Date     ：2023/11/3 19:37 
-
-@Description：
-
-'''
 import numpy as np
 import torch
 import copy
